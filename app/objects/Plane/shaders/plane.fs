@@ -15,7 +15,13 @@ void main() {
 
   vec3 firstColor = mix( firstTexture.rgb, previousTexture.rgb, ( firstTexture.rgb - previousTexture.rgb ) );
   vec3 secondColor = mix( firstTexture.rgb, previousTexture2.rgb, ( firstTexture.rgb - previousTexture2.rgb ) );
-  vec3 color = firstColor;
+
+  // vec3 color = firstTexture.rgb - previousTexture.rgb + firstTexture.rgb - previousTexture2.rgb;
+
+  // vec3 color = firstTexture.rgb - previousTexture.rgb + firstTexture.rgb - secondColor.rgb;
+
+  vec3 color = firstTexture.rgb - firstColor.rgb + firstTexture.rgb - secondColor.rgb;
+
   float alpha = 1.;
 
   gl_FragColor = vec4(color, alpha);
