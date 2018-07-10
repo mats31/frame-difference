@@ -8,7 +8,7 @@ void main() {
   vec4 firstTexture = texture2D(tCanvas, vUv);
   vec4 previousTexture = texture2D(tPreviousCanvas, vUv);
 
-  vec3 color = firstTexture.rgb - previousTexture.rgb;
+  vec3 color = firstTexture.rgb + abs( ( firstTexture.rgb - previousTexture.rgb ) );
   float alpha = 1.;
 
   gl_FragColor = vec4(color, alpha);
