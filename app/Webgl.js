@@ -30,9 +30,10 @@ export default class Webgl {
 
   // State --------
 
-  setCanvas(canvas, previousCanvas) {
+  setCanvas(canvas, previousCanvas, previousCanvas2) {
     this._plane.setFirstCanvas(canvas);
     this._plane.setPreviousCanvas(previousCanvas);
+    this._plane.setPreviousCanvas2(previousCanvas2);
   }
 
   resize( width, height ) {

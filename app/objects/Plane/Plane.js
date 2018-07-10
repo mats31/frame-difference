@@ -10,6 +10,7 @@ export default class Plane extends THREE.Object3D {
     this._uniforms = {
       tCanvas: { type: 't', value: null },
       tPreviousCanvas: { type: 't', value: null },
+      tPreviousCanvas2: { type: 't', value: null },
     };
 
     this._material = new THREE.ShaderMaterial({
@@ -34,6 +35,11 @@ export default class Plane extends THREE.Object3D {
     this._uniforms.tPreviousCanvas.value.needsUpdate = true;
   }
 
+  setPreviousCanvas2(canvas) {
+    this._uniforms.tPreviousCanvas2.value = new THREE.Texture(canvas);
+    this._uniforms.tPreviousCanvas2.value.needsUpdate = true;
+  }
+
   update() {
     if (this._uniforms.tCanvas.value) {
       this._uniforms.tCanvas.value.needsUpdate = true;
@@ -41,6 +47,10 @@ export default class Plane extends THREE.Object3D {
 
     if (this._uniforms.tPreviousCanvas.value) {
       this._uniforms.tPreviousCanvas.value.needsUpdate = true;
+    }
+
+    if (this._uniforms.tPreviousCanvas2.value) {
+      this._uniforms.tPreviousCanvas2.value.needsUpdate = true;
     }
   }
 }

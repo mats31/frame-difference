@@ -21,6 +21,8 @@ previousCtx.canvas.style.right = '0px';
 previousCtx.canvas.style.top = '0px';
 // document.body.appendChild( previousCtx.canvas );
 
+const previousCtx2 = createCanvas(512, 512, false, 1);
+
 // video settings
 const video = document.createElement('video');
 const videoData = [];
@@ -46,6 +48,9 @@ function updateCanvas() {
   }
 
   previousCtx.putImageData(videoData[0], 0, 0, 0, 0, 512, 512);
+  if (videoData[10]) {
+    previousCtx2.putImageData(videoData[10], 0, 0, 0, 0, 512, 512);
+  }
 }
 
 function animate() {
@@ -73,7 +78,7 @@ function startUserMedia() {
     const constraints = { video: true };
     navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
 
-    webgl.setCanvas(ctx.canvas, previousCtx.canvas);
+    webgl.setCanvas(ctx.canvas, previousCtx.canvas, previousCtx2.canvas);
 }
 
 // handle resize
